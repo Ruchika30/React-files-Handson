@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-import Radium, { StyleRoot } from "radium";
 
 import ValidationComponent from "./Person/ValidationComponent";
 import Charcomponent from "./Person/Charcomponent";
@@ -100,11 +99,7 @@ class App extends Component {
       color: "white",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer",
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "white"
-      }
+      cursor: "pointer"
     };
 
     let persons = null;
@@ -128,10 +123,6 @@ class App extends Component {
 
       //Setting Bg color gynamically just like the above baribale "persons"
       style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "salmon",
-        color: "white"
-      };
     }
 
     /*
@@ -166,31 +157,29 @@ class App extends Component {
           /> */
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Hi, I'm a React App</h1>
-          <p className={classes.join(" ")}>This is really working!</p>
-          <button style={style} onClick={this.togglePersonsHandler}>
-            Toggle Persons
-          </button>
-          {persons}
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p className={classes.join(" ")}>This is really working!</p>
+        <button style={style} onClick={this.togglePersonsHandler}>
+          Toggle Persons
+        </button>
+        {persons}
 
-          {/* Assignment */}
-          <input
-            type="text"
-            onChange={this.eventchangelistener}
-            /* Always show latest value from state  */
-            value={this.state.userinput}
-          />
-          <p>{this.state.userinput}</p>
+        {/* Assignment */}
+        <input
+          type="text"
+          onChange={this.eventchangelistener}
+          /* Always show latest value from state  */
+          value={this.state.userinput}
+        />
+        <p>{this.state.userinput}</p>
 
-          <ValidationComponent userinp={this.state.userinput} />
-          {charlist}
-        </div>
-      </StyleRoot>
+        <ValidationComponent userinp={this.state.userinput} />
+        {charlist}
+      </div>
     );
   }
   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
 }
 
-export default Radium(App);
+export default App;
